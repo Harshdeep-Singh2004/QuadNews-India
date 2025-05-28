@@ -12,8 +12,8 @@ cron.schedule('*/30 * * * *', async () => {
     }
 });
 
-// // Run immediately on startup
-// console.log('🚀 Starting initial news fetch...');
-// saveArticles()
-//     .then(() => console.log('✅ Initial news fetch completed'))
-//     .catch(error => console.error('❌ Error in initial news fetch:', error)); 
+// Run immediately on startup
+console.log('🚀 Starting initial news fetch...');
+saveArticles()
+    .then(() => console.log('✅ Initial news fetch completed'))
+    .catch(error => console.error('❌ Error in initial news fetch:', error)); 
