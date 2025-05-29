@@ -1,106 +1,129 @@
-# QuadNews India 📰
+# QuadNews India
 
-![QuadNews India](https://quadnews-india.onrender.com/static/media/logo.6ce24c58023cc2f8fd6e.png)
+A modern news aggregation platform built with React and Node.js, providing real-time news updates from various sources across India.
 
-QuadNews India is a modern news aggregation platform that brings together the latest news from multiple sources across India. The platform provides a clean, user-friendly interface to stay updated with current events.
+## Live Demo
 
-## 🌟 Features
+Visit the application at: [QuadNews India](https://quadnews-india.onrender.com/)
 
-- Real-time news updates from multiple sources
-- Clean and intuitive user interface
+## Key Features & Benefits
+
+### 🚀 Smart News Aggregation
+- Automated news collection from multiple sources
+- Real-time updates every 30 minutes
+- AI-powered content processing and summarization
+- Categorized news sections for easy navigation
+
+### 👤 User Experience
+- Clean, modern interface built with React and Tailwind CSS
 - Responsive design for all devices
-- News categorization and filtering
-- Search functionality
-- Automatic news summarization
+- Fast loading with Vite build system
+- Intuitive navigation and search functionality
 
-## 🚀 Live Demo
+### 🔒 User Management
+- Secure user authentication with JWT
+- Password encryption using bcrypt
+- Personalized user profiles
+- Note-taking feature for saving important news
 
-Visit the live application at: [QuadNews India](https://quadnews-india.onrender.com/)
+### 📱 Modern Tech Stack
+- React 19 with latest features
+- Node.js backend with Express
+- MongoDB for efficient data storage
+- Google AI integration for smart content processing
 
-## 🛠️ Tech Stack
+### 🔄 Automated Updates
+- Scheduled news fetching every 30 minutes
+- Automatic content categorization
+- Real-time news updates
+- Background processing with node-cron
+
+## Tech Stack
 
 ### Frontend
-- React.js
-- Material-UI
-- Redux for state management
-- Axios for API calls
+- React 19
+- Vite
+- React Router DOM
+- Tailwind CSS
+- React Icons
+- Axios
+- Moment.js
 
 ### Backend
 - Node.js
 - Express.js
-- MongoDB
-- News API integration
-- Automated news fetching and updating
+- MongoDB with Mongoose
+- Google Generative AI
+- Node-cron for scheduling
+- Cheerio for web scraping
+- JWT for authentication
+- Bcrypt for password hashing
 
-## 📦 Installation
+## Features
 
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/quadnews-india.git
+- Real-time news aggregation
+- User authentication
+- News categorization
+- Responsive design
+- Web scraping for news updates
+- AI-powered content processing
+- Automated news updates using cron jobs
+
+## Project Structure
+
+```
+quadnews-india/
+├── frontend/
+│   └── quadnews-app/         # React frontend application
+│       ├── src/             # Source code
+│       ├── public/          # Static assets
+│       └── package.json     # Frontend dependencies
+└── backend/
+    ├── index.js            # Main server file
+    ├── scheduler.js        # News update scheduler
+    ├── models/            # Database models
+    ├── fetcher/           # News fetching logic
+    ├── newsUpdater/       # News update handlers
+    ├── summarizers/       # Content summarization
+    └── package.json       # Backend dependencies
 ```
 
-2. Install backend dependencies:
-```bash
-cd backend
-npm install
-```
+## Getting Started
 
-3. Install frontend dependencies:
-```bash
-cd frontend/quadnews-app
-npm install
-```
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   # Backend
+   cd backend
+   npm install
 
-4. Create a `.env` file in the backend directory with your configuration:
-```env
-MONGODB_URI=your_mongodb_uri
-NEWS_API_KEY=your_news_api_key
-PORT=5000
-```
+   # Frontend
+   cd frontend/quadnews-app
+   npm install
+   ```
 
-5. Start the backend server:
-```bash
-cd backend
-npm start
-```
+3. Set up environment variables in backend:
+   ```
+   MONGODB_URI=your_mongodb_uri
+   JWT_SECRET=your_jwt_secret
+   GOOGLE_AI_KEY=your_google_ai_key
+   ```
 
-6. Start the frontend development server:
-```bash
-cd frontend/quadnews-app
-npm start
-```
+4. Start the development servers:
+   ```bash
+   # Backend
+   cd backend
+   npm start
 
-## 🔧 Configuration
+   # Frontend
+   cd frontend/quadnews-app
+   npm run dev
+   ```
 
-The application requires the following environment variables to be set:
+## Author
 
-- `MONGODB_URI`: MongoDB connection string
-- `NEWS_API_KEY`: API key for news data
-- `PORT`: Backend server port (default: 5000)
+Harshdeep Singh
 
-## 🤝 Contributing
+## License
 
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 👥 Authors
-
-- Your Name - Initial work
-
-## 🙏 Acknowledgments
-
-- News API for providing news data
-- All contributors who have helped shape this project
-
----
-
-Made with ❤️ in India
+ISC
