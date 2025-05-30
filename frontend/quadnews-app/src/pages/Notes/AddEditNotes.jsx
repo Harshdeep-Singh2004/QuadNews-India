@@ -84,7 +84,7 @@ const AddEditNotes = ({noteData, type, getAllNotes, onClose, showToastMessage, h
                 <input 
                     type="text"
                     className='text-2xl text-slate-950 bg-slate-50 outline-none p-2 border-[2px]'
-                    placeholder=''
+                    placeholder='News Topic'
                     value={title}
                     onChange={({target}) => setTitle(target.value)}
                 />
@@ -95,7 +95,7 @@ const AddEditNotes = ({noteData, type, getAllNotes, onClose, showToastMessage, h
                 <textarea
                     type="text"
                     className='text-sm text-slate-950 outline-none bg-slate-50 p-2 rounded border-[2px]'
-                    placeholder='Content'
+                    placeholder='News Article Content'
                     rows={10}
                     value={content}
                     onChange={({target})=>setContent(target.value)}
