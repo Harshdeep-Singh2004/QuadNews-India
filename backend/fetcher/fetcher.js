@@ -30,13 +30,13 @@ async function fetchHeadlinesArticles() {
         for (let i=0; i<3; i++) {
             const element = links[i];
             const link = $(element).attr('href');
-            let headline = $(element).find('.CRKrj.style_change').text().trim();
+            const headline = $(element).find('.CRKrj.style_change').text().trim();
             
             try {
                 const articleResponse = await axios.get(link);
                 const $$ = cheerio.load(articleResponse.data);
                 let article = $$('._s30J.clearfix').text().trim();
-                article = await generateArticle(article);
+                article = await generateArticle(article, headline);
                 headline_article.push({ headline, article, link, genre:"trending" });
             } 
             catch (err) {
@@ -63,13 +63,13 @@ async function fetchHeadlinesArticles() {
         for (let i=0; i<3; i++) {
             const element = links[i];
             const link = $(element).attr('href');
-            let headline = $(element).find('span').text().trim();
+            const headline = $(element).find('span').text().trim();
             
             try {
                 const articleResponse = await axios.get(link);
                 const $$ = cheerio.load(articleResponse.data);
                 let article = $$('._s30J.clearfix').text().trim();
-                article = await generateArticle(article);
+                article = await generateArticle(article, headline);
                 headline_article.push({ headline, article, link, genre:"technology" });
             } 
             catch (err) {
@@ -103,7 +103,7 @@ async function fetchHeadlinesArticles() {
                 const response = await axios.get(link);
                 const $$ = cheerio.load(response.data);
                 let article = $$('.jsx-ace90f4eca22afc7.jsx-73334835.Story_story__content__body__qCd5E.story__content__body.widgetgap p').text().trim();
-                article = await generateArticle(article);
+                article = await generateArticle(article, headline);
                 headline_article.push({ headline, article, link, genre:"sports" });
             } 
             catch (err) {
@@ -136,7 +136,7 @@ async function fetchHeadlinesArticles() {
                 const articleResponse = await axios.get(link);
                 const $$ = cheerio.load(articleResponse.data);
                 let article = $$('.jsx-ace90f4eca22afc7.jsx-73334835.Story_story__content__body__qCd5E.story__content__body.widgetgap p').text().trim();
-                article = await generateArticle(article);
+                article = await generateArticle(article, headline);
                 headline_article.push({ headline, article, link, genre:"entertainment" });
             } 
             catch (err) {
@@ -171,7 +171,7 @@ async function fetchHeadlinesArticles() {
                 const articleResponse = await axios.get(link);
                 const $$ = cheerio.load(articleResponse.data);
                 let article = $$('.text-formatted.field.field--name-body.field--type-text-with-summary.field__item p').text().trim();
-                article = await generateArticle(article);
+                article = await generateArticle(article, headline);
                 headline_article.push({ headline, article, link, genre:"business" });
             } 
             catch (err) {
