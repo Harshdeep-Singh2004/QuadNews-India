@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import axiosInstance from '../../utils/axiosInstance';
 import AddEditNotes from '../Notes/AddEditNotes';
 import Toast from '../../components/ToastMessage/Toast';
+import { FaArrowLeft } from 'react-icons/fa6';
 
 const renderParagraphsFromText = (text) => {
     if (!text) {
@@ -75,6 +76,11 @@ const Article = () => {
     return (
         <>
             <Navbar userInfo={userInfo} onSearchNote={null} handleClearSearch={null} />
+            <button 
+                onClick={() => navigate('/news-dashboard')}
+                className="fixed top-18 left-2 w-20 h-10 rounded-md bg-transparent text-black flex items-center justify-center flex gap-1">
+                <FaArrowLeft className=''/>Back
+            </button>
             <div className="px-5 my-2">
                 <div className="max-w-7xl mx-auto">
                     <div className='flex items-start gap-8'>
@@ -125,6 +131,11 @@ const Article = () => {
                 type="add" 
                 onClose={handleCloseToast} 
             />
+            <button 
+                onClick={() => navigate('/my-notes')}
+                className="fixed bottom-8 right-8 w-20 h-10 rounded-md bg-black text-white flex items-center justify-center shadow-lg">
+                Notes
+            </button>
         </>
     );
 };
