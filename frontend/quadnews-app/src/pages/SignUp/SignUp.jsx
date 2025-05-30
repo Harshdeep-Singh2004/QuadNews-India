@@ -66,14 +66,14 @@ const SignUp = () => {
         <>
             <Navbar></Navbar>
             <div className="flex items-center justify-center items-stretch mt-28">
-                <div className="w-96 border rounded bg-white px-7 py-10">
+                <div className="w-96 border-2 rounded bg-white px-7 py-10">
                     <form onSubmit={handleSignUp}>
 
-                        <h4 className='text-2xl mb-7 font-semibold'>SignUp</h4>
+                        <h4 className='text-2xl mb-9 font-bold'>SignUp</h4>
 
                         <input 
                             type="text" 
-                            placeholder="Name" 
+                            placeholder="Username" 
                             className="input-box"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
@@ -81,7 +81,7 @@ const SignUp = () => {
 
                         <input 
                             type="text" 
-                            placeholder="Email" 
+                            placeholder="Email address" 
                             className="input-box"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
@@ -96,13 +96,13 @@ const SignUp = () => {
 
                         <button type="submit" className="btn-primary">SignUp</button>
 
-                        <p className="text-sm text-center mt-4">Already have an account?{" "}
+                        <p className="text-sm text-center mt-4 text-gray-500">Already have an account?{" "}
                             <Link to="/login" className="font-medium text-primary underline">Login</Link>
                         </p>
 
                     </form>
                 </div>
-                <div className="w-96 border rounded bg-white flex items-center justify-center">
+                <div className="w-96 rounded bg-[#f5f5f5] flex items-center justify-center">
                     <Intro></Intro>
                 </div>
             </div>
