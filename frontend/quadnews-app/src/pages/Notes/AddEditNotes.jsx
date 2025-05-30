@@ -84,7 +84,7 @@ const AddEditNotes = ({noteData, type, getAllNotes, onClose, showToastMessage, h
                 <input 
                     type="text"
                     className='text-2xl text-slate-950 bg-slate-50 outline-none p-2 border-[2px]'
-                    placeholder='Go To Gym At 5'
+                    placeholder=''
                     value={title}
                     onChange={({target}) => setTitle(target.value)}
                 />
