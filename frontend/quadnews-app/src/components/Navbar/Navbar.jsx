@@ -27,10 +27,10 @@ const Navbar = ({ userInfo, onSearchNote, handleClearSearch }) => {
 
     return (
         <div className='bg-white flex items-center justify-between px-6 py-2 drop-shadow'>
-            <h2 className='text-3xl font-bold font-raleway py-2'>
+            <button className='text-3xl font-bold font-raleway py-2' onClick={() => navigate('/news-dashboard')}>
                 <span className='text-primary'>Quad</span>
                 <span>News</span>
-            </h2>
+            </button>
 
             {userInfo && onSearchNote && (
                 <SearchBar 
