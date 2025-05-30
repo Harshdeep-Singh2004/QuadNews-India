@@ -50,7 +50,7 @@ const TagInput = ({ tags, setTags }) => {
                     onKeyDown={handleKeyDown}
                 />
                 <button 
-                    className='w-8 h-8 flex items-center justify-center rounded border border-blue-700 hover:bg-black'
+                    className='w-8 h-8 flex items-center justify-center rounded border border-black hover:bg-black'
                     onClick={addNewTag}
                 >
                     <MdAdd className="text-2xl text-black hover:text-white" />
