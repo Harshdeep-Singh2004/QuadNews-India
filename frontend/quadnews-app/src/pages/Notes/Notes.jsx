@@ -9,6 +9,7 @@ import Toast from '../../components/ToastMessage/Toast';
 import EmptyCard from '../../components/EmptyCard/EmptyCard';
 import Add_note from '../../assets/images/Add_note.svg';
 import noData from '../../assets/images/no_Data.svg';
+import { FaArrowLeft } from 'react-icons/fa6';
  
 const Notes = () => {
 
@@ -128,6 +129,11 @@ const Notes = () => {
     return (
         <>
             <Navbar userInfo={userInfo} onSearchNote={onSearchNote} handleClearSearch={handleClearSearch}></Navbar>
+            <button 
+                onClick={() => navigate('/news-dashboard')}
+                className="fixed top-18 left-2 w-20 h-10 rounded-md bg-transparent text-primary flex items-center justify-center flex gap-1">
+                <FaArrowLeft className=''/>Back
+            </button>
             {
                 allNotes.length>0 ? (
                     <div className='container mx-auto px-20'>
@@ -181,7 +187,6 @@ const Notes = () => {
                 type={showToastMsg.type}
                 onClose={handleCloseToast}
             ></Toast>
-            
         </>
     )
 }
