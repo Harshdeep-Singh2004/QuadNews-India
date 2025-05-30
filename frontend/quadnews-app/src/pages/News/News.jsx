@@ -3,7 +3,6 @@ import Navbar from '../../components/Navbar/Navbar'
 import NewsCard from '../../components/Cards/NewsCard';
 import axiosInstance from '../../utils/axiosInstance';
 import { useNavigate } from 'react-router-dom';
-import { MdNote } from "react-icons/md";
 
 const News = () => {
     const [userInfo, setUserInfo] = useState(null);
@@ -54,9 +53,8 @@ const News = () => {
 
             <button 
                 onClick={() => navigate('/my-notes')}
-                className="fixed bottom-8 right-8 w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center hover:bg-blue-600 transition-colors shadow-lg"
-            >
-                <MdNote size={24} />
+                className="fixed bottom-8 right-8 w-20 h-10 rounded-md bg-primary text-white flex items-center justify-center hover:bg-blue-600 transition-colors shadow-lg">
+                Notes
             </button>
         </>
     );
