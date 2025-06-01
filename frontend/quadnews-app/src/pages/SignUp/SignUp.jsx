@@ -57,7 +57,7 @@ const SignUp = () => {
             }
             else { 
                 // unknown errors
-                setError("An unexpected error occured. Please try again.");
+                setError(`An unexpected error occured. Please try again. ${error.message}`);
             }
         }
     }
