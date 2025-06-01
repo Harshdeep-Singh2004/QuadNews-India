@@ -5,9 +5,19 @@ const bcrypt = require('bcrypt');
 const port = process.env.PORT || 8000;
 dotenv.config();
 
+const express = require('express');
+const cors = require('cors');
+const app = express();
 const connectDB = async () => {
     await mongoose.connect(config.connectionString)
-    .then(() => {console.log("MongoDB connected")})
+    .then(() => {
+        console.log("MongoDB connected")
+        require('./scheduler');
+        app.listen(port, () => {
+            console.log("Server started")
+        });
+        module.exports = app;
+    })
     .catch(err => {
         console.error("MongoDB connection error:", err);
         process.exit(1);
@@ -15,15 +25,11 @@ const connectDB = async () => {
 }
 connectDB();
 // Import the schedule
-require('./scheduler');
 
 const User = require("./models/user.model");
 const Note = require("./models/note.model");
 const News = require("./models/news.model");
 
-const express = require('express');
-const cors = require('cors');
-const app = express();
 
 const jwt = require("jsonwebtoken");
 const { authenticateToken } = require("./utilities");
@@ -336,6 +342,3 @@ app.get('/get-news', async (req, res) => {
         });
     }
 })
-
-app.listen(port);
-module.exports = app;
