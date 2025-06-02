@@ -10,7 +10,7 @@ Visit the application at: [QuadNews India](https://quadnews-india.onrender.com/)
 
 ### 🚀 Smart News Aggregation
 - Automated news collection from multiple sources
-- Real-time updates every 30 minutes
+- Real-time updates every 20 minutes
 - AI-powered content processing and summarization
 - Categorized news sections for easy navigation
 
