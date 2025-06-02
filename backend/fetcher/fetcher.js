@@ -5,11 +5,13 @@ const generateArticle = require('../summarizers/articleSummarizer.js');
 const timesofindia = 'https://timesofindia.indiatimes.com/';
 const indiaToday = 'https://www.indiatoday.in/';
 const businessToday = "https://www.businesstoday.in/";
+const theTribune = 'https://www.tribuneindia.com/';
+const indianExpress = 'https://indianexpress.com/';
 
 const genre = {
     'trending': "news",
-    'technology': "technology",
-    'sports': "sports",
+    'technology': "section/technology/",
+    'sports': 'news/sports',
     'entertainment': 'entertainment',
     'business': ''
 }
@@ -18,7 +20,7 @@ const genre = {
 async function fetchHeadlinesArticles() {
     const results = {};
 
-    ////////////////////////// Trending
+    //////////////////////// Trending
     try {
         const url = timesofindia + genre['trending'];
         const response = await axios.get(url);
@@ -51,30 +53,33 @@ async function fetchHeadlinesArticles() {
         results['trending'] = { error: 'Failed to fetch headlines' };
     }
 
-    // //////////////////////////// Technology
+    //////////////////////////// Technology
     try {
-        const url = timesofindia + genre['technology'];
+        const url = indianExpress + genre['technology'];
         const response = await axios.get(url);
         const $ = cheerio.load(response.data);
         
-        const links = $('.lSIdy.col_l_6.col_m_6 a').slice(5,8);
+        // const links = $('.lSIdy.col_l_6.col_m_6 a').slice(0,3);
+        const linksA = $('.top-storybx .lead-imgbox h2 a').slice(0,1);
+        const linksB = $('.top-storybx .leadsecond .imgbox h2 a').slice(0,2);
+        const links = [...linksA, ...linksB]
         const headline_article = [];
         
         for (let i=0; i<3; i++) {
             const element = links[i];
             const link = $(element).attr('href');
-            const headline = $(element).find('span').text().trim();
+            const headline = $(element).text().trim();
             
             try {
                 const articleResponse = await axios.get(link);
                 const $$ = cheerio.load(articleResponse.data);
-                let article = $$('._s30J.clearfix').text().trim();
+                let article = $$('.articles .full-details p').text().trim();
                 article = await generateArticle(article, headline);
                 headline_article.push({ headline, article, link, genre:"technology" });
             } 
             catch (err) {
                 console.error(`Error fetching article of technoloyg from ${link}:`, err.message);
-                headline_article.push({ headline, article: '', genre:"technology" });
+                headline_article.push({ headline, article: '', link, genre:"technology" });
             }
         }
         results['technology'] = headline_article;
@@ -85,40 +90,41 @@ async function fetchHeadlinesArticles() {
     }
 
 
-    // ////////////////////////// Sports
+    /////////////////////////////// Sports    
     try {
-        const url = indiaToday + genre['sports'];
+        const url = theTribune + genre['sports'];
         const response = await axios.get(url);
         const $ = cheerio.load(response.data);
 
-        const links = $('.B1S3_B1__s3__widget__lSl3T.widgetgap .story__grid .B1S3_story__card__A_fhi h3 a').slice(0, 3);
+        const links = $('.category-top-layout ._review .h2-title h2 a').slice(0, 3);
         const headline_article = [];
 
-        for (let i=0; i<3; i++) {
+        const count = Math.min(links.length, 3);
+        for (let i = 0; i < count; i++) {
             const element = links[i];
+            const link = $(element).attr('href');
             const headline = $(element).text().trim();
-            let link = $(element).attr('href');
 
             try {
-                const response = await axios.get(link);
-                const $$ = cheerio.load(response.data);
-                let article = $$('.jsx-ace90f4eca22afc7.jsx-73334835.Story_story__content__body__qCd5E.story__content__body.widgetgap p').text().trim();
-                article = await generateArticle(article, headline);
+                const articleResponse = await axios.get(link);
+                const $$ = cheerio.load(articleResponse.data);
+                let article = $$('.main-content-section-inner p').text().trim();
+                article = await generateArticle(article);
                 headline_article.push({ headline, article, link, genre:"sports" });
             } 
             catch (err) {
                 console.error(`Error fetching article from ${link}:`, err.message);
                 headline_article.push({ headline, article: '', link, genre:"sports" });
             }
-        }     
-        results['sports'] = headline_article; 
+        }
+        results['sports'] = headline_article;
     } 
     catch (error) {
-        console.error(`Error fetching Times of India trending news:`, error.message);
+        console.error(`Error fetching TheTribune trending news:`, error.message);
         results['sports'] = { error: 'Failed to fetch headlines' };
     }
     
-    // // //////////////////////// Entertainment
+    //////////////////////// Entertainment
     try {
         const url = indiaToday + genre['entertainment'];
         const response = await axios.get(url);
@@ -151,7 +157,7 @@ async function fetchHeadlinesArticles() {
         results['entertainment'] = { error: 'Failed to fetch headlines' };
     }
 
-    // //////////////////////// Business
+    //////////////////////// Business
     try {
         const url = businessToday + genre['business'];
         const response = await axios.get(url);
@@ -186,7 +192,7 @@ async function fetchHeadlinesArticles() {
         results['business'] = { error: 'Failed to fetch headlines' };
     }
 
-
+    console.log(results)
     return results;
 }
 
