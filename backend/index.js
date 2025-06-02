@@ -12,6 +12,7 @@ const connectDB = async () => {
     await mongoose.connect(config.connectionString)
     .then(() => {
         console.log("MongoDB connected")
+        require('./scheduler');
         app.listen(port, () => {
             console.log("Server started")
         });
@@ -24,7 +25,6 @@ const connectDB = async () => {
 }
 connectDB();
 // Import the schedule
-require('./scheduler');
 
 const User = require("./models/user.model");
 const Note = require("./models/note.model");
