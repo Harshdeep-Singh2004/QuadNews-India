@@ -2,7 +2,7 @@ const cron = require('node-cron');
 const saveArticles = require('./newsUpdater/saveNews');
 
 // Schedule the news update every 30 minutes
-cron.schedule('*/30 * * * *', async () => {
+cron.schedule('*/20 * * * *', async () => {
     console.log('🕒 Running scheduled news update...');
     try {
         await saveArticles();
