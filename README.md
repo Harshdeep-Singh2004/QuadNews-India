@@ -1,6 +1,6 @@
 # QuadNews India
 
-A modern news aggregation platform built with React and Node.js, providing real-time news updates from various sources across India.
+Quadnews is a full-stack MERN web app aggregating India's top news headlines and AI-summarized articles using Cheerio for scraping and Gemini-inspired summarization. It ensures security with JWT authentication and bcrypt hashing, while offering user authentication and an inbuilt notes feature for personalized engagement and content management.
 
 ## Live Demo
 
