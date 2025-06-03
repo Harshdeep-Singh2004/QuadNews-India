@@ -10,6 +10,7 @@ import EmptyCard from '../../components/EmptyCard/EmptyCard';
 import Add_note from '../../assets/images/Add_note.svg';
 import noData from '../../assets/images/no_Data.svg';
 import { FaArrowLeft } from 'react-icons/fa6';
+import { FaPlus } from 'react-icons/fa';
  
 const Notes = () => {
 
@@ -34,6 +35,9 @@ const Notes = () => {
 
     const handleEdit = (noteDetails) => {
         setOpenAddEditModal({ isShown:true, data:noteDetails, type:"edit" });
+    };
+    const handleAddNote = () => {
+        setOpenAddEditModal({ isShown: true, type: "add", data: null });
     };
 
     const showToastMessage = (message, type) => {
@@ -180,6 +184,13 @@ const Notes = () => {
                     showToastMessage={showToastMessage}
                 />
             </Modal>
+
+            <button
+                onClick={handleAddNote}
+                className="fixed bottom-8 right-8 w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center shadow-lg hover:bg-primary/90 transition-all duration-200"
+            >
+                <FaPlus className="text-xl" />
+            </button>
 
             <Toast
                 isShown={showToastMsg.isShown}
