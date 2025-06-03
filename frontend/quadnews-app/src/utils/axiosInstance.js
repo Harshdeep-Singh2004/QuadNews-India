@@ -21,6 +21,6 @@ axiosInstance.interceptors.request.use(
     }
 );
 
-axiosInstance.defaults.timeout = 30000;
+axiosInstance.defaults.timeout = 65000;
 
 export default axiosInstance;
