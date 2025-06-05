@@ -27,7 +27,7 @@ const News = () => {
     useEffect(() => {
         const refreshTimer = setTimeout(() => {
             window.location.reload();
-        }, 30 * 60 * 1000);
+        }, 15 * 60 * 1000);
         return () => clearTimeout(refreshTimer);
     }, []);
 
