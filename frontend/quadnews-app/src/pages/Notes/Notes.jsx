@@ -146,7 +146,7 @@ const Notes = () => {
                                 <NoteCard 
                                     key={item._id}
                                     title={item.title}
-                                    date={item.createOn} 
+                                    date={item.createdOn} 
                                     content={item.content}
                                     tags={item.tags}
                                     isPinned={item.isPinned}
